@@ -7,7 +7,7 @@ interface Props {
 
 export const SearchResult: FC<Props> = ({ city }) => {
   return (
-    <div className='flex dark:hover:bg-dark-main-100 px-4'>
+    <div className='flex dark:hover:bg-dark-main-400 px-4 cursor-pointer last:rounded-b-lg'>
        <Flag
         code={ city.country_code }
         height={40}

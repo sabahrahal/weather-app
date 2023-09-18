@@ -18,7 +18,9 @@ export default {
         'dark-text-link': '#76bedd'
       },
       colors:{
-        'dark-main-500': '#3f4251', 
+        'dark-main-500': '#3f4251',
+        'dark-main-400': '#434a51',
+        'dark-main-200': '#373b47', 
         'dark-main-100': '#474d5d'
       },
       maxWidth: {
