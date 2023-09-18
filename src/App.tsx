@@ -2,8 +2,8 @@ import { Outlet } from 'react-router-dom'
 
 export const App = (): JSX.Element => {
   return (
-    <>
-      <Outlet />
-    </>
+    <main className='dark:bg-dark-main-100'>
+        {<Outlet/>}
+    </main>
   )
 }
