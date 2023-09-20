@@ -1,28 +1,14 @@
-import { useQuery } from 'react-query'
+import { useQuery, type UseQueryResult } from 'react-query'
+import { type FetchCity } from '../types'
+import { getCities } from '../APIs/api'
 
-export const useCities = (cityName: string): fetchCity | undefined => {
-  const API_URL = `https://geocoding-api.open-meteo.com/v1/search?name=${cityName}&count=10&language=es&format=json`
-  const getCities = async (): Promise<fetchCity> => {
-    try {
-      const response = await fetch(API_URL)
-      if (!response.ok) {
-        throw new Error('Fetch data error')
-      }
-      const data = await response.json()
-      return data
-    } catch (error) {
-      console.error('Error:', error)
-      throw error
-    }
-  }
-
-  const { data: cities } = useQuery(['cityName', cityName], async (): Promise<fetchCity | undefined> => {
-    if (cityName.length >= 2) {
-      const response = await getCities()
-      return { results: response.results }
-    }
-    return undefined
+export const useCities = (cityName: string): UseQueryResult<FetchCity> => {
+  return useQuery({
+    queryKey: ['cityName', cityName],
+    queryFn: async () => await getCities(cityName),
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    refetchIntervalInBackground: false,
+    staleTime: Infinity
   })
-
-  return cities
 }

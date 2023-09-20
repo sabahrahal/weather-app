@@ -6,7 +6,7 @@ export const SearchBar = (): JSX.Element => {
   const handleChange = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>): void => {
     setCityName(value)
   }
-  const cities = useCities(cityName)
+  const { data: cities } = useCities(cityName)
 
   return (
     <section className='flex flex-col space-y-8 pt-10'>
