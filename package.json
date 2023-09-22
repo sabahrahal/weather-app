@@ -10,12 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.35.3",
+    "@tanstack/react-query-devtools": "^4.35.3",
     "@types/react-router-dom": "^5.3.3",
     "luxon": "^3.4.3",
     "query-string": "^8.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-query": "^3.39.3",
     "react-router-dom": "^6.16.0",
     "react-world-flags": "^1.5.1"
   },

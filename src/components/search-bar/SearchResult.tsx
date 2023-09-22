@@ -1,16 +1,19 @@
 import { type FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Flag from 'react-world-flags'
-import { type City } from '../../types'
+import { type SearchCity } from '../../types'
 
 interface Props {
-  city: City
+  city: SearchCity
+  searchResult: string
+  setSearchResult: React.Dispatch<React.SetStateAction<string>>
 }
 
-export const SearchResult: FC<Props> = ({ city }) => {
+export const SearchResult: FC<Props> = ({ city, searchResult, setSearchResult }) => {
   const navigate = useNavigate()
   const cityNavigate = (): void => {
-    navigate(`/city?latitude=${city.latitude}&longitude=${city.longitude}`)
+    navigate(`/city?search=${searchResult}&latitude=${city.latitude}&longitude=${city.longitude}`)
+    setSearchResult('')
   }
   return (
     <div className='flex dark:hover:bg-dark-main-400 px-4 cursor-pointer last:rounded-b-lg' onClick={cityNavigate}>

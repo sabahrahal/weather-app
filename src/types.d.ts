@@ -1,4 +1,30 @@
-export interface City {
+export interface CityDetails {
+  adminCode1: string
+  lng: string
+  distance: string
+  geonameId: number
+  toponymName: string
+  countryId: string
+  fcl: string
+  population: number
+  countryCode: string
+  name: string
+  fclName: string
+  adminCodes1: {
+    ISO3166_2: string
+  }
+  countryName: string
+  fcodeName: string
+  adminName1: string
+  lat: string
+  fcode: string
+}
+
+export interface CityDetailsResponse {
+  geonames: GeoName[]
+}
+
+export interface SearchCity {
   id: number
   name: string
   latitude: number
@@ -14,8 +40,8 @@ export interface City {
   admin1: string
 }
 
-export interface FetchCity {
-  results: City[]
+export interface SearchCitiesResponse {
+  results: SearchCity[]
 }
 
 export interface Weather {
@@ -69,4 +95,17 @@ export interface WeeklyWeather {
     temperature_2m_max: number[]
     temperature_2m_min: number[]
   }
+}
+
+export interface weeklyReport {
+  time: string[]
+  weathercode: number[]
+  temperature_2m_max: number[]
+  temperature_2m_min: number[]
+}
+
+export interface Icon {
+  width: string
+  height: string
+  color: string
 }

@@ -2,7 +2,7 @@ import { WMO } from '.'
 import { type WeatherExtaInfo } from '../types'
 import { formatHour } from './formatHour'
 
-export const getWeatherResources = (code: number, hour: string): WeatherExtaInfo | undefined => {
+export const getWeatherResources = (code: number, hour: string = 'day'): WeatherExtaInfo | undefined => {
   const format = formatHour(hour)
   const wmoAcces = WMO[code]
   if (typeof wmoAcces === 'object' && wmoAcces !== null && format in wmoAcces) {
