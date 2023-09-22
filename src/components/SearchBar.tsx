@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ToggleButtom, SearchResult } from './search-bar'
 import { useSearchBar } from '../Hooks/useSearchBar'
 import { useQueryClient } from '@tanstack/react-query'
+import { Link } from 'react-router-dom'
 export const SearchBar = (): JSX.Element => {
   const [search, setSearch] = useState('')
   const queryClient = useQueryClient()
@@ -17,7 +18,7 @@ export const SearchBar = (): JSX.Element => {
   return (
     <section className='flex flex-col space-y-8 pt-10'>
       <div className='flex justify-between items-center'>
-        <h1 className='text-4xl text-dark-text-100'>Weather App</h1>
+        <Link to="/" className='text-4xl text-dark-text-100'>Weather App</Link>
         <ToggleButtom/>
       </div>
       <div className='dark:bg-dark-main-500 dark:text-dark-text-300 rounded-t-lg py-1 relative z-10'>

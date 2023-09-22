@@ -12,7 +12,7 @@ interface Props {
 export const SearchResult: FC<Props> = ({ city, searchResult, setSearchResult }) => {
   const navigate = useNavigate()
   const cityNavigate = (): void => {
-    navigate(`/city?search=${searchResult}&latitude=${city.latitude}&longitude=${city.longitude}`)
+    navigate(`/forecast?search=${searchResult}&latitude=${city.latitude}&longitude=${city.longitude}`)
     setSearchResult('')
   }
   return (

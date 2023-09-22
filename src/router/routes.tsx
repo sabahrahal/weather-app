@@ -1,5 +1,5 @@
 import { App } from '../App'
-import { City, Home, Weekly } from '../pages'
+import { Home, Forecast, Daily } from '../pages'
 
 export const routes = [
   {
@@ -11,12 +11,12 @@ export const routes = [
         element: <Home/>
       },
       {
-        path: '/city',
-        element: <City/>
+        path: '/forecast',
+        element: <Forecast/>
       },
       {
-        path: '/city/weekly',
-        element: <Weekly/>
+        path: '/forecast/daily',
+        element: <Daily/>
       }
     ]
   }

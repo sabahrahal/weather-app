@@ -109,3 +109,16 @@ export interface Icon {
   height: string
   color: string
 }
+
+export interface Card {
+  time: string
+  temperature?: number | undefined
+  temperatureMin?: number
+  temperatureMax?: number
+  icon: string
+  description: string
+  isLink: boolean
+  searchResult: string
+  latitude: string
+  longitude: string
+}

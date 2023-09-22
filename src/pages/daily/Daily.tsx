@@ -1,13 +1,12 @@
-import { useLocation } from 'react-router-dom'
-import { useWeather } from '../../Hooks/useWeather'
-import { DateTime } from 'luxon'
-import { HourCard } from './components/HourCard'
-import { getWeatherResources } from '../../utils'
 import queryString from 'query-string'
+import { useLocation } from 'react-router-dom'
+import { useWeather } from '../../Hooks'
+import { DateTime } from 'luxon'
+import { getWeatherResources } from '../../utils'
+import { ForecastLayout } from '../../components/forecast'
 import type { WeatherExtaInfo, WeatherElement } from '../../types'
-import { CityBanner } from './components/CityBanner'
 
-export const City: React.FC = () => {
+export const Daily: React.FC = () => {
   const { search } = useLocation()
   const { latitude, longitude } = queryString.parse(search) as { latitude: string, longitude: string }
   const { data, isLoading, isError } = useWeather(latitude, longitude)
@@ -28,18 +27,18 @@ export const City: React.FC = () => {
   })
   return (
     <section>
-      { isLoading && <div></div> }
-      { isError && <div></div> }
-      <CityBanner />
-      <div className='dark:bg-dark-main-500 grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-4 rounded-lg py-4 px-4'>
-        {weatherItems?.map(
-          weatherItem => <HourCard
-          key={weatherItem.time}
-          time={weatherItem.time}
-          isNow={weatherItem.isNow}
-          temperature={weatherItem.temperature}
-          WeatherExtaInfo={weatherItem.weatherExtraInfo}/>)}
-      </div>
-    </section>
+        { isLoading && <div></div> }
+        { isError && <div></div> }
+        <div className='dark:bg-dark-main-500 grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-4 rounded-lg py-4 px-4'>
+        {weatherItems.map(
+          day => <ForecastLayout
+            key={day.time}
+            time={day.time}
+            isNow={day.isNow}
+            temperature={day.temperature}
+            weatherExtraInfo={day.weatherExtraInfo}
+        />)}
+        </div>
+  </section>
   )
 }

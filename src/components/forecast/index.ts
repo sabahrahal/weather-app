@@ -1,3 +1,3 @@
 export * from './BigCard'
-export * from './HourCard'
+export * from './ForecastLayout'
 export * from './SmallCard'
