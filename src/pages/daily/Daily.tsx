@@ -1,30 +1,15 @@
 import queryString from 'query-string'
 import { useLocation } from 'react-router-dom'
 import { useWeather } from '../../Hooks'
-import { DateTime } from 'luxon'
-import { getWeatherResources } from '../../utils'
+import { syncHour } from '../../utils'
 import { ForecastLayout } from '../../components/forecast'
-import type { WeatherExtaInfo, WeatherElement } from '../../types'
 
 export const Daily: React.FC = () => {
   const { search } = useLocation()
   const { latitude, longitude } = queryString.parse(search) as { latitude: string, longitude: string }
   const { data, isLoading, isError } = useWeather(latitude, longitude)
   if (isLoading) return <div>Loading...</div>
-  const hourlyData = data?.hourly
-  const cityHour = DateTime.local().setZone(data?.timezone)
-  const { temperature_2m: temperature, time, weathercode } = hourlyData as WeatherElement
-  const weatherItems = time?.map((hour, index) => {
-    const tempHour = DateTime.fromISO(hour)
-    const isNow = cityHour.hour === tempHour.hour
-    const formatHour = tempHour.toFormat('h:mm a')
-    return {
-      time: formatHour.toString(),
-      isNow,
-      temperature: Math.round(temperature?.[index]),
-      weatherExtraInfo: getWeatherResources(weathercode?.[index], formatHour) as WeatherExtaInfo
-    }
-  })
+  const weatherItems = syncHour(data)
   return (
     <section>
         { isLoading && <div></div> }
@@ -34,6 +19,7 @@ export const Daily: React.FC = () => {
           day => <ForecastLayout
             key={day.time}
             time={day.time}
+            date={day.date}
             isNow={day.isNow}
             temperature={day.temperature}
             weatherExtraInfo={day.weatherExtraInfo}

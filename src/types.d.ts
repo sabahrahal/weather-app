@@ -64,10 +64,12 @@ export interface Weather {
   }
 }
 
-export interface WeatherElement {
-  time: string[]
-  temperature_2m: number[]
-  weathercode: number[]
+export interface WeatherItem {
+  time: string
+  date: string
+  isNow: booelan
+  temperature: number
+  weatherExtraInfo: weatherExtraInfo
 }
 
 export interface WeatherExtaInfo {
@@ -97,11 +99,19 @@ export interface WeeklyWeather {
   }
 }
 
-export interface weeklyReport {
+export interface WeeklyReport {
   time: string[]
   weathercode: number[]
   temperature_2m_max: number[]
   temperature_2m_min: number[]
+}
+
+export interface WeeklyItem {
+  time: string
+  isNow: booelan
+  temperatureMin: number
+  temperatureMax: number
+  weatherExtraInfo: WeatherExtaInfo
 }
 
 export interface Icon {
@@ -112,6 +122,7 @@ export interface Icon {
 
 export interface Card {
   time: string
+  date?: string
   temperature?: number | undefined
   temperatureMin?: number
   temperatureMax?: number

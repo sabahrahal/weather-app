@@ -4,7 +4,7 @@ import { getWeeklyWeather } from '../APIs/api'
 
 export const useWeekly = (latitude: string, longitude: string): UseQueryResult<WeeklyWeather> => {
   return useQuery({
-    queryKey: ['weeklyWeather'],
+    queryKey: ['weeklyWeather', latitude],
     // eslint-disable-next-line @typescript-eslint/promise-function-async
     queryFn: () => getWeeklyWeather(latitude, longitude),
     refetchOnWindowFocus: false,
