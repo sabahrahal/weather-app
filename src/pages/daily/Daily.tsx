@@ -14,7 +14,7 @@ export const Daily: React.FC = () => {
     <section>
         { isLoading && <div></div> }
         { isError && <div></div> }
-        <div className='dark:bg-dark-main-500 grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-4 rounded-lg py-4 px-4'>
+        <div className='bg-light-page-background dark:bg-dark-page-background grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-4 rounded-lg py-4 px-4'>
         {weatherItems.map(
           day => <ForecastLayout
             key={day.time}

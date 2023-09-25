@@ -4,6 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       screens:{
@@ -18,13 +19,22 @@ export default {
         'dark-text-300': '#b2b5bf',
         'dark-text-200': '#e8e9eb',
         'dark-text-100': '#fafafb',
-        'dark-text-link': '#76bedd'
+        'dark-text-link': '#76bedd',
+        'light-text-500': '#3e4144',
+        'light-text-400': '#3e4144',
+        'light-text-300': '#3e4144',
+        'light-text-200': '#3e4144',
+        'light-text-100': '#3e4144',
+        'light-text-link': '#ec6e4c'
       },
       colors:{
-        'dark-main-500': '#3f4251',
-        'dark-main-400': '#434a51',
-        'dark-main-200': '#373b47', 
-        'dark-main-100': '#474d5d'
+        'dark-page-background': '#3f4251',
+        'dark-hover-background': '#434a51', 
+        'dark-body-background': '#474d5d',
+        'light-body-background': '#c9eafd',
+        'light-page-background': '#8bd3f8',
+        'light-hover-background': '#5ab2da',
+        'toggle-buttom': '#76bedd'
       },
       maxWidth: {
 				'sm-custom': '540px',

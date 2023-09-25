@@ -16,7 +16,7 @@ export const SearchResult: FC<Props> = ({ city, searchResult, setSearchResult })
     setSearchResult('')
   }
   return (
-    <div className='flex dark:hover:bg-dark-main-400 px-4 cursor-pointer last:rounded-b-lg' onClick={cityNavigate}>
+    <div className='flex hover:bg-light-hover-background dark:hover:bg-dark-hover-background px-4 cursor-pointer last:rounded-b-lg' onClick={cityNavigate}>
        <Flag
         code={ city.country_code }
         height={40}
