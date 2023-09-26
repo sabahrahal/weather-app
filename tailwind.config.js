@@ -31,10 +31,16 @@ export default {
         'dark-page-background': '#3f4251',
         'dark-hover-background': '#434a51', 
         'dark-body-background': '#474d5d',
+        'dark-modal-background': '#2e2f33',
+        'dark-btn-background': '#76bedd',
+        'dark-btn-background-hover': '#5f9db8',
         'light-body-background': '#c9eafd',
         'light-page-background': '#8bd3f8',
         'light-hover-background': '#5ab2da',
-        'toggle-buttom': '#76bedd'
+        'light-modal-background': '#5ab2da',
+        'light-btn-background': '#ec6e4c',
+        'light-btn-background-hover': '#bd563a',
+        'toggle-buttom': '#76bedd',
       },
       maxWidth: {
 				'sm-custom': '540px',

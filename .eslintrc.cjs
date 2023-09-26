@@ -1,3 +1,5 @@
+const { off } = require("process");
+
 module.exports = {
   env: {
     browser: true,
@@ -30,6 +32,8 @@ module.exports = {
   ],
   rules: {
     'react/react-in-jsx-scope': 'off',
-    '@typescript-eslint/no-floating-promises': 'off'
+    '@typescript-eslint/no-floating-promises': 'off',
+    '@typescript-eslint/strict-boolean-expressions': 0,
+    '@typescript-eslint/triple-slash-reference': 'off'
   }
 }

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Flag from 'react-world-flags'
 import type { Card } from '../../types'
 import { useCityDetails } from '../../Hooks'
+import { LoadingSpinner } from '../'
 
 export const BigCard: FC<Card> = ({ time, date, temperature, temperatureMin, temperatureMax, icon, description, isLink, searchResult, latitude, longitude }) => {
   const ParentElement = isLink ? Link : 'div'
@@ -10,8 +11,8 @@ export const BigCard: FC<Card> = ({ time, date, temperature, temperatureMin, tem
   const { name, countryCode } = data || {} // eslint-disable-line
   return (
     <ParentElement to={`/forecast/daily?search=${searchResult}&latitude=${latitude}&longitude=${longitude}`} className='flex order-first flex-col xs:flex-row bg-light-body-background dark:bg-gray-600 rounded-lg bg-light-400 p-2 col-span-2 md:col-span-3 items-center justify-between drop-shadow-md'>
-      { isLoading && <div>Loading...</div> }
       <div className='flex flex-col items-center xs:items-start xs:w-1/3'>
+      { isLoading && <LoadingSpinner /> }
         <Flag
           code={ countryCode }
           height={100}

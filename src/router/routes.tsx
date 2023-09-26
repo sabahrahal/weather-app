@@ -1,5 +1,5 @@
 import { App } from '../App'
-import { Home, Forecast, Daily } from '../pages'
+import { Home, Forecast, Daily, NotFoundPage } from '../pages'
 
 export const routes = [
   {
@@ -17,6 +17,10 @@ export const routes = [
       {
         path: '/forecast/daily',
         element: <Daily/>
+      },
+      {
+        path: '*',
+        element: <NotFoundPage/>
       }
     ]
   }

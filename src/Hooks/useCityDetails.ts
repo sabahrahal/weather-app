@@ -4,7 +4,7 @@ import { getCityDetails } from '../APIs/api'
 
 export const useCityDetails = (latitude: string, longitude: string): UseQueryResult<CityDetails> => {
   return useQuery({
-    queryKey: ['city'],
+    queryKey: ['city', latitude],
     // eslint-disable-next-line @typescript-eslint/promise-function-async
     queryFn: () => getCityDetails(latitude, longitude),
     refetchOnWindowFocus: false,
