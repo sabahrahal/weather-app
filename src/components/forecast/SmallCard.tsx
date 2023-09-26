@@ -1,11 +1,9 @@
 import { type FC } from 'react'
-import { Link } from 'react-router-dom'
 import { type Card } from '../../types'
 
-export const SmallCard: FC<Card> = ({ time, temperature, temperatureMin, temperatureMax, icon, description, isLink, searchResult, latitude, longitude }) => {
-  const ParentElement = isLink ? Link : 'div'
+export const SmallCard: FC<Card> = ({ time, temperature, temperatureMin, temperatureMax, icon, description }) => {
   return (
-    <ParentElement to={`/forecast/daily?search=${searchResult}&latitude=${latitude}&longitude=${longitude}`} className='flex flex-col items-center justify-center text-center bg-light-body-background dark:bg-gray-600 bg-light-400 rounded-lg p-2 drop-shadow-md'>
+    <div className='flex flex-col items-center justify-center text-center bg-light-body-background dark:bg-gray-600 bg-light-400 rounded-lg p-2 drop-shadow-md'>
         <img src={icon} width={80} height={80} alt={`${description} icon`} />
         <span className='text-xs text-light-text-300 dark:text-dark-text-300'>{description}</span>
         {
@@ -33,6 +31,6 @@ export const SmallCard: FC<Card> = ({ time, temperature, temperatureMin, tempera
         }
 
         <span className='text-sm text-light-text-300 dark:text-dark-text-300'>{time}</span>
-    </ParentElement>
+    </div>
   )
 }

@@ -14,6 +14,7 @@ export const Forecast: React.FC = () => {
   const weeklyItems = syncDate(data)
   return (
     <section>
+      <h1 className='text-3xl pb-2 text-light-text-200 dark:text-dark-text-100 font-mono'>Weekly Forecast</h1>
       <div className='bg-light-page-background dark:bg-dark-page-background grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-4 rounded-lg py-4 px-4'>
         { isError && <NotFoundPage/> }
         {weeklyItems.map(

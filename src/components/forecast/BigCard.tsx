@@ -10,14 +10,14 @@ export const BigCard: FC<Card> = ({ time, date, temperature, temperatureMin, tem
   const { data, isLoading } = useCityDetails(latitude, longitude)
   const { name, countryCode } = data || {} // eslint-disable-line
   return (
-    <ParentElement to={`/forecast/daily?search=${searchResult}&latitude=${latitude}&longitude=${longitude}`} className='flex order-first flex-col xs:flex-row bg-light-body-background dark:bg-gray-600 rounded-lg bg-light-400 p-2 col-span-2 md:col-span-3 items-center justify-between drop-shadow-md'>
-      <div className='flex flex-col items-center xs:items-start xs:w-1/3'>
+    <ParentElement to={`/forecast/daily?search=${searchResult}&latitude=${latitude}&longitude=${longitude}`} className={`${temperature === undefined && 'dark:hover:bg-dark-hover-background duration-150'} flex order-first flex-col xs:flex-row bg-light-body-background dark:bg-gray-600 rounded-lg bg-light-400 p-2 col-span-2 md:col-span-3 items-center justify-between drop-shadow-md`}>
+      <div className='flex flex-col items-center xs:w-1/3 text-center py-2'>
       { isLoading && <LoadingSpinner /> }
         <Flag
           code={ countryCode }
           height={100}
           width={100}
-          className='mb-4 rounded-lg'
+          className='mb-4 rounded-lg mx-auto'
         />
         <span className='text-light-text-200 dark:text-dark-text-200'>{ name }</span>
         {
@@ -43,6 +43,7 @@ export const BigCard: FC<Card> = ({ time, date, temperature, temperatureMin, tem
               <span className='text-[60px] font-mono dark:text-dark-text-100 text-light-text-100'>{temperatureMin}</span>
               <sup className='text-[20px] text-light-text-300 dark:text-dark-text-300 font-mono'>°C</sup>
             </div>
+            <p className='dark:text-dark-text-100 text-light-text-100 text-sm'>view today&apos;s forecast</p>
           </>
         : <div className='flex flex-col items-center justify-center'>
             <div className='mb-4 flex items-center justify-center'>
@@ -53,8 +54,8 @@ export const BigCard: FC<Card> = ({ time, date, temperature, temperatureMin, tem
           </div>
       }
       </div>
-      <div className='xs:w-1/3 text-center xs:text-right'>
-        <img className='ml-auto' src={icon} width={100} height={100} alt={`${description} icon`} />
+      <div className='xs:w-1/3 text-center xs:text-right flex justify-center items-center flex-col relative'>
+        <img src={icon} width={100} height={100} alt={`${description} icon`} />
         <span className='text-sm dark:text-dark-text-300 text-light-text-300'>{description}</span>
       </div>
   </ParentElement>

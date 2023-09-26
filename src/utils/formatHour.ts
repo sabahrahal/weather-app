@@ -1,11 +1,17 @@
-export const formatHour = (hour: string): string => {
-  const AM = 'am'
-  const DAY = 'day'
-  const NIGHT = 'night'
-  const split = hour.split(' ')
-  if (split.length >= 2) {
-    const amPm = split[split.length - 1].slice(-2).toLocaleLowerCase()
-    if (amPm === AM) return NIGHT
+export const formatHour = (time: string): string => {
+  const splitTime = time.split(' ')
+  if (splitTime.length === 2) {
+    const amPm = splitTime[1].toUpperCase()
+    const [hourStr] = splitTime[0].split(':')
+    const hour = parseInt(hourStr)
+
+    if (amPm === 'AM') {
+      if (hour >= 7 && hour <= 11) return 'day'
+      if (hour === 12 || (hour >= 1 && hour <= 6)) return 'night'
+    } else {
+      if (hour === 12 || (hour >= 1 && hour <= 6)) return 'day'
+      return 'night'
+    }
   }
-  return DAY
+  return 'day'
 }
